@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이용약관 — InnoByte Note</title>
+<meta name="description" content="InnoByte Note 앱의 서비스 이용약관">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-faint: #888;
+    --accent: #2d4a3e;
+    --rule: #d8d6cf;
+    --paper: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 48px;
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Serif', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .meta {
+    color: var(--ink-faint);
+    font-size: 14px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta strong { color: var(--ink-soft); font-weight: 500; }
+  h2 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  h2 .num {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+    margin-right: 8px;
+  }
+  p { margin-bottom: 16px; color: var(--ink-soft); }
+  p strong { color: var(--ink); font-weight: 500; }
+  ul, ol { margin-bottom: 16px; padding-left: 22px; color: var(--ink-soft); }
+  li { margin-bottom: 6px; }
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover { color: var(--ink); }
+  .table-of-contents {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 28px;
+    margin-bottom: 56px;
+  }
+  .table-of-contents h4 {
+    font-family: 'IBM Plex Serif', serif;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .table-of-contents ol {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 32px;
+    counter-reset: item;
+  }
+  .table-of-contents li {
+    font-size: 14px;
+    margin-bottom: 6px;
+    break-inside: avoid;
+  }
+  .table-of-contents a { text-decoration: none; color: var(--ink-soft); }
+  .table-of-contents a:hover { color: var(--accent); }
+  .table-of-contents li::before {
+    content: counter(item, decimal-leading-zero) '. ';
+    counter-increment: item;
+    color: var(--ink-faint);
+    font-family: 'IBM Plex Serif', serif;
+    font-style: italic;
+  }
+  .info-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .info-card p:last-child { margin-bottom: 0; }
+  .warning-card {
+    background: #fdf6e3;
+    border: 1px solid #e6dcc0;
+    border-left: 3px solid #b8860b;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .warning-card p:last-child { margin-bottom: 0; }
+  footer {
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .links { display: flex; gap: 24px; }
+  footer a { color: var(--ink-faint); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) {
+    .container { padding: 56px 24px 80px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 20px; }
+    .table-of-contents ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="eyebrow">Legal · Terms</div>
+    <h1>서비스 이용약관</h1>
+    <div class="meta">
+      <span><strong>서비스명</strong> InnoByte Note</span>
+      <span><strong>최종 수정일</strong> 2026년 5월 7일</span>
+      <span><strong>시행일</strong> 2026년 5월 7일</span>
+    </div>
+  </header>
+
+  <div class="table-of-contents">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#s1">목적</a></li>
+      <li><a href="#s2">정의</a></li>
+      <li><a href="#s3">약관의 효력 및 변경</a></li>
+      <li><a href="#s4">서비스 가입 및 계정</a></li>
+      <li><a href="#s5">서비스의 제공</a></li>
+      <li><a href="#s6">이용자의 의무</a></li>
+      <li><a href="#s7">콘텐츠의 권리</a></li>
+      <li><a href="#s8">서비스의 중단·종료</a></li>
+      <li><a href="#s9">면책</a></li>
+      <li><a href="#s10">분쟁 해결</a></li>
+    </ol>
+  </div>
+
+  <section id="s1">
+    <h2><span class="num">01</span>목적</h2>
+    <p>본 약관은 InnoByte 팀(이하 "팀")이 제공하는 InnoByte Note 모바일 애플리케이션 및 관련 서비스(이하 "서비스")의 이용 조건을 정합니다. 이용자는 본 약관에 동의함으로써 서비스를 이용할 수 있습니다.</p>
+    <div class="info-card">
+      <p><strong>본 서비스는 캡스톤 프로젝트의 일환으로 개발</strong>되었으며, 학습·연구 목적의 비상업적 베타 서비스입니다. 상업적 이용이나 중요 데이터의 보관 용도로는 적합하지 않을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section id="s2">
+    <h2><span class="num">02</span>정의</h2>
+    <ul>
+      <li><strong>"서비스"</strong> — InnoByte Note 앱과 이를 통해 제공되는 노트 작성·OCR·STT·퀴즈 생성·PDF 검색 등 모든 기능</li>
+      <li><strong>"이용자"</strong> — 본 약관에 동의하고 서비스를 사용하는 자</li>
+      <li><strong>"콘텐츠"</strong> — 이용자가 서비스를 통해 작성·업로드한 노트, 손글씨, PDF, 음성, 이미지 등 일체의 데이터</li>
+      <li><strong>"계정"</strong> — Google OAuth로 인증된 이용자의 식별 단위</li>
+    </ul>
+  </section>
+
+  <section id="s3">
+    <h2><span class="num">03</span>약관의 효력 및 변경</h2>
+    <p>본 약관은 서비스 화면에 게시함으로써 효력이 발생합니다. 팀은 관련 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있으며, 변경 시 시행일 7일 전부터 앱 내에 공지합니다.</p>
+    <p>이용자가 변경된 약관에 동의하지 않는 경우 회원 탈퇴를 요청할 수 있으며, 시행일 이후에도 서비스를 계속 이용하면 변경 약관에 동의한 것으로 간주됩니다.</p>
+  </section>
+
+  <section id="s4">
+    <h2><span class="num">04</span>서비스 가입 및 계정</h2>
+    <p>이용자는 Google 계정을 통해 서비스에 가입할 수 있습니다. 가입 시 다음 사항에 동의한 것으로 간주됩니다.</p>
+    <ul>
+      <li>본 약관 및 <a href="./privacy.html">개인정보처리방침</a></li>
+      <li>Google Drive의 <code>drive.file</code> 권한 부여(앱이 만든 파일에만 한정)</li>
+      <li>음성·텍스트 데이터의 처리(STT, OCR, 키워드 추출 등)</li>
+    </ul>
+    <p>한 명의 이용자는 하나의 Google 계정으로만 서비스를 이용할 수 있으며, 계정 정보의 도용이나 부정 이용을 방지할 책임은 이용자에게 있습니다.</p>
+  </section>
+
+  <section id="s5">
+    <h2><span class="num">05</span>서비스의 제공</h2>
+    <p>팀은 다음의 기능을 제공합니다.</p>
+    <ul>
+      <li>손글씨 노트 작성 및 PDF 첨부·열람</li>
+      <li>음성-텍스트 변환(STT)과 키워드 추출</li>
+      <li>OCR 기반 텍스트 인식 및 분할 모드 변환</li>
+      <li>PDF 의미 검색 및 AI 퀴즈 생성</li>
+      <li>Google Drive를 이용한 다중 기기 동기화</li>
+    </ul>
+    <p>팀은 안정적인 서비스 제공을 위해 노력하지만, 다음의 경우 서비스의 일부 또는 전부를 일시 중단할 수 있습니다.</p>
+    <ul>
+      <li>시스템 점검·교체·증설 시</li>
+      <li>천재지변·전쟁·정전 등 불가항력</li>
+      <li>외부 API(Google, OpenAI, Pinecone 등)의 장애</li>
+      <li>학사 일정상의 운영 중단</li>
+    </ul>
+  </section>
+
+  <section id="s6">
+    <h2><span class="num">06</span>이용자의 의무</h2>
+    <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
+    <ul>
+      <li>타인의 계정·정보를 도용하는 행위</li>
+      <li>서비스를 통해 불법·음란·폭력적 콘텐츠를 생성하거나 유포하는 행위</li>
+      <li>저작권 등 타인의 권리를 침해하는 콘텐츠를 업로드하는 행위</li>
+      <li>리버스 엔지니어링, 자동화 봇 등으로 서비스의 정상 운영을 방해하는 행위</li>
+      <li>서비스를 상업적으로 재판매·재배포하는 행위</li>
+      <li>관련 법령 또는 본 약관을 위반하는 행위</li>
+    </ul>
+    <p>위반 시 팀은 사전 통지 없이 콘텐츠를 삭제하거나 계정 이용을 제한할 수 있습니다.</p>
+  </section>
+
+  <section id="s7">
+    <h2><span class="num">07</span>콘텐츠의 권리</h2>
+    <p>이용자가 작성·업로드한 모든 콘텐츠의 저작권은 <strong>이용자에게 귀속</strong>됩니다. 다만 팀은 서비스 제공·개선·운영을 위해 필요한 범위에서 해당 콘텐츠를 처리·저장·전송할 수 있습니다.</p>
+    <p>서비스 자체(앱, 디자인, 로고, 코드 등)에 대한 권리는 InnoByte 팀에게 귀속됩니다.</p>
+  </section>
+
+  <section id="s8">
+    <h2><span class="num">08</span>서비스의 중단·종료</h2>
+    <div class="warning-card">
+      <p><strong>중요</strong> — 본 서비스는 캡스톤 프로젝트로 운영되므로, 졸업·발표 종료 등의 사유로 서비스가 영구 종료될 수 있습니다. 종료 시점은 최소 30일 전에 앱 내 공지 또는 등록 이메일로 안내합니다.</p>
+      <p>중요한 노트는 PDF 추출 기능을 통해 별도로 보관하시거나 Google Drive에 백업하시기를 권장합니다.</p>
+    </div>
+    <p>이용자는 언제든지 앱 내 <strong>설정 → 회원 탈퇴</strong>를 통해 서비스 이용을 종료할 수 있으며, 이 경우 모든 데이터는 즉시 삭제됩니다(Google Drive 파일 제외).</p>
+  </section>
+
+  <section id="s9">
+    <h2><span class="num">09</span>면책</h2>
+    <p>팀은 다음에 대해 책임을 지지 않습니다.</p>
+    <ul>
+      <li>천재지변, 외부 서비스 장애 등 불가항력으로 인한 손해</li>
+      <li>이용자의 귀책사유로 인한 손해(계정 정보 유출, 부주의로 인한 데이터 손실 등)</li>
+      <li>이용자가 작성·업로드한 콘텐츠의 정확성·완전성</li>
+      <li>AI 기능(퀴즈 생성, 문맥 교정, OCR)의 결과물 정확성 — 본 결과물은 참고용이며, 실제 학습·시험에 사용 시 별도 검증이 필요합니다</li>
+      <li>무료 베타 서비스 특성상 발생할 수 있는 일시적 데이터 손실</li>
+    </ul>
+  </section>
+
+  <section id="s10">
+    <h2><span class="num">10</span>분쟁 해결</h2>
+    <p>본 약관 해석상 분쟁이 발생할 경우 대한민국 법령을 적용하며, 관할 법원은 민사소송법에 따른 일반 관할 법원으로 합니다.</p>
+    <div class="info-card">
+      <p>분쟁 해결 전 우선 <a href="mailto:innobyte.support@gmail.com">innobyte.support@gmail.com</a>으로 문의해 주시면 신속히 답변드리겠습니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 InnoByte. 본 서비스는 캡스톤 프로젝트입니다.</span>
+    <div class="links">
+      <a href="./privacy.html">개인정보처리방침</a>
+      <a href="./delete-request.html">데이터 삭제 요청</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
