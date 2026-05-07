@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>데이터 삭제 요청 — InnoByte Note</title>
+<meta name="description" content="InnoByte Note 계정 및 데이터 삭제 요청 안내">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-faint: #888;
+    --accent: #2d4a3e;
+    --rule: #d8d6cf;
+    --paper: #fff;
+    --warn: #b8860b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 48px;
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Serif', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .lede {
+    font-family: 'IBM Plex Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  h2 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  h2 .num {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+    margin-right: 8px;
+  }
+  p { margin-bottom: 16px; color: var(--ink-soft); }
+  p strong { color: var(--ink); font-weight: 500; }
+  ul, ol { margin-bottom: 16px; padding-left: 22px; color: var(--ink-soft); }
+  li { margin-bottom: 8px; }
+
+  /* 옵션 카드 */
+  .options { margin-top: 32px; }
+  .option {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+  .option:hover { border-color: var(--accent); }
+  .option-label {
+    font-family: 'IBM Plex Serif', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .option h3 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .option ol {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 16px;
+  }
+  .option ol li {
+    counter-increment: step;
+    padding-left: 36px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .option ol li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    background: var(--accent);
+    color: white;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .email-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: white;
+    padding: 14px 24px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 2px;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+  .email-button:hover { background: #1c3329; color: white; }
+  .email-button::after {
+    content: '→';
+    font-family: 'IBM Plex Serif', serif;
+  }
+
+  .deletion-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  .deletion-table th, .deletion-table td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .deletion-table th {
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--paper);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .deletion-table td { color: var(--ink-soft); }
+  .badge-yes {
+    display: inline-block;
+    background: #e8f0ec;
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .badge-no {
+    display: inline-block;
+    background: #fdf6e3;
+    color: var(--warn);
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .info-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .info-card p:last-child { margin-bottom: 0; }
+  .warning-card {
+    background: #fdf6e3;
+    border: 1px solid #e6dcc0;
+    border-left: 3px solid var(--warn);
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .warning-card p:last-child { margin-bottom: 0; }
+  .warning-card strong { color: #8b6508; }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover { color: var(--ink); }
+
+  footer {
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .links { display: flex; gap: 24px; }
+  footer a { color: var(--ink-faint); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) {
+    .container { padding: 56px 24px 80px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 20px; }
+    .option { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="eyebrow">Data Rights · Account Deletion</div>
+    <h1>데이터 삭제 요청</h1>
+    <p class="lede">InnoByte Note 계정과 관련 데이터 삭제를 요청하실 수 있는 두 가지 방법을 안내합니다. 두 방법 모두 동일한 결과를 가져오며, 어느 쪽을 사용하셔도 됩니다.</p>
+  </header>
+
+  <div class="options">
+
+    <!-- 방법 1: 앱 내에서 -->
+    <div class="option">
+      <div class="option-label">Method 01 · Recommended</div>
+      <h3>앱 내에서 직접 탈퇴 (권장)</h3>
+      <p>가장 빠르고 즉시 처리되는 방법입니다. 앱이 설치되어 있고 로그인된 상태라면 다음 절차를 따라주세요.</p>
+      <ol>
+        <li>InnoByte Note 앱을 실행하고 로그인합니다.</li>
+        <li>좌측 사이드바 하단의 <strong>설정</strong> 버튼을 누릅니다.</li>
+        <li><strong>회원 탈퇴</strong> 메뉴를 선택합니다.</li>
+        <li>안내 메시지를 읽고 본인 이메일을 입력하여 확인합니다.</li>
+        <li>탈퇴 완료 — 모든 데이터가 즉시 삭제됩니다.</li>
+      </ol>
+    </div>
+
+    <!-- 방법 2: 이메일 -->
+    <div class="option">
+      <div class="option-label">Method 02 · Email Request</div>
+      <h3>이메일로 삭제 요청</h3>
+      <p>앱을 사용할 수 없는 상황(앱 삭제 후, 로그인 불가 등)이라면 이메일로 요청해 주세요. 영업일 기준 7일 이내에 처리됩니다.</p>
+      <p style="margin-top: 16px;"><strong>받는 사람:</strong> innobyte.support@gmail.com<br>
+      <strong>제목:</strong> [데이터 삭제 요청]<br>
+      <strong>본문 포함 사항:</strong></p>
+      <ul>
+        <li>가입 시 사용한 Google 계정 이메일 주소</li>
+        <li>(선택) 삭제 사유</li>
+      </ul>
+      <a href="mailto:innobyte.support@gmail.com?subject=%5B%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%82%AD%EC%A0%9C%20%EC%9A%94%EC%B2%AD%5D&body=%EA%B0%80%EC%9E%85%20%EC%9D%B4%EB%A9%94%EC%9D%BC%3A%20%0A%EC%82%AD%EC%A0%9C%20%EC%82%AC%EC%9C%A0(%EC%84%A0%ED%83%9D)%3A%20%0A" class="email-button">
+        이메일 보내기
+      </a>
+    </div>
+
+  </div>
+
+  <section>
+    <h2><span class="num">01</span>삭제되는 데이터</h2>
+    <p>탈퇴 처리 시 다음 데이터가 영구적으로 삭제되며, 한 번 삭제된 데이터는 <strong>복구할 수 없습니다</strong>.</p>
+    <table class="deletion-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>저장 위치</th>
+          <th>삭제 여부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>계정 정보 (이메일, 이름, Google ID)</td>
+          <td>자체 서버 + Firebase</td>
+          <td><span class="badge-yes">즉시 삭제</span></td>
+        </tr>
+        <tr>
+          <td>인증 토큰 (access·refresh)</td>
+          <td>자체 서버</td>
+          <td><span class="badge-yes">즉시 무효화</span></td>
+        </tr>
+        <tr>
+          <td>노트, 손글씨, 첨부 PDF 메타데이터</td>
+          <td>자체 서버</td>
+          <td><span class="badge-yes">즉시 삭제</span></td>
+        </tr>
+        <tr>
+          <td>PDF 검색용 벡터 임베딩</td>
+          <td>Pinecone</td>
+          <td><span class="badge-yes">즉시 삭제</span></td>
+        </tr>
+        <tr>
+          <td>퀴즈 세트 및 학습 기록</td>
+          <td>자체 서버</td>
+          <td><span class="badge-yes">즉시 삭제</span></td>
+        </tr>
+        <tr>
+          <td>STT 음성 스트림</td>
+          <td>저장하지 않음</td>
+          <td><span class="badge-yes">애초에 미저장</span></td>
+        </tr>
+        <tr>
+          <td>접속 로그</td>
+          <td>자체 서버</td>
+          <td><span class="badge-yes">최대 3개월 후 자동 삭제</span></td>
+        </tr>
+        <tr>
+          <td><strong>이용자 본인의 Google Drive에 저장된 PDF 파일</strong></td>
+          <td>이용자 Google Drive</td>
+          <td><span class="badge-no">삭제하지 않음</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-card">
+      <p><strong>Google Drive 파일에 대한 안내</strong></p>
+      <p>본 서비스는 이용자의 Google Drive에 PDF를 보관하지만, 해당 파일은 <strong>이용자 본인의 자산</strong>입니다. 따라서 회원 탈퇴 시에도 Drive에서 자동으로 삭제하지 않습니다. Drive 파일까지 삭제하길 원하시면 <a href="https://drive.google.com" target="_blank" rel="noopener">drive.google.com</a>에서 <code>NoteAI</code> 폴더를 직접 삭제해 주세요.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>처리 기간</h2>
+    <ul>
+      <li><strong>앱 내 탈퇴</strong> — 즉시 처리, 평균 3초 이내</li>
+      <li><strong>이메일 요청</strong> — 영업일 기준 7일 이내 처리, 처리 완료 시 회신</li>
+    </ul>
+    <div class="info-card">
+      <p>관련 법령에 따라 보존이 의무화된 정보(통신비밀보호법상 로그 등)는 법정 기간 동안 분리 보관 후 폐기됩니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>주의 사항</h2>
+    <ul>
+      <li>탈퇴 후 동일한 Google 계정으로 재가입은 가능하지만, <strong>이전 데이터는 복구되지 않습니다</strong>.</li>
+      <li>중요한 노트는 탈퇴 전에 <strong>설정 → PDF 추출</strong>을 통해 백업해 두시길 권장합니다.</li>
+      <li>탈퇴 처리는 비가역적입니다. 진행 전 신중히 검토해 주세요.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>문의</h2>
+    <p>삭제 요청 처리 과정에서 문의가 필요하시면 언제든지 연락 주세요.</p>
+    <div class="info-card">
+      <p><strong>InnoByte 팀 · 계명대학교 캡스톤 프로젝트</strong><br>
+      이메일: <a href="mailto:innobyte.support@gmail.com">innobyte.support@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 InnoByte. 본 서비스는 캡스톤 프로젝트입니다.</span>
+    <div class="links">
+      <a href="./privacy.html">개인정보처리방침</a>
+      <a href="./terms.html">이용약관</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
